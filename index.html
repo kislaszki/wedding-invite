@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="KR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper-like Background</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for elegant typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Noto+Serif+KR:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            /* Use the uploaded image as the background */
+            background-image: url('background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Ensures the background doesn't scroll with content */
+            background-color: #fcfbf8;
+        }
+
+        .flower-image {
+            position: absolute;
+            top: 50%;
+            left: 45%; /* Approximately 1/3 from the left */
+            transform: translateY(-50%) translateX(-50%); /* Centers the image vertically and horizontally relative to its 1/3 position */
+            width: auto; /* You can adjust the size as needed */
+            height: auto;
+        }
+
+        .vertical-line {
+            position: absolute;
+            top: 0;
+            height: 380%;
+            width: 1.5px;
+            background-color: black;
+        }
+
+        /* Styles for the elegant text in the middle */
+        .centered-text {
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            font-size: 5rem;
+            line-height: 1.5; /* Adjust line height for close vertical spacing */
+            color: #333;
+        }
+
+        .korean-name {
+            font-family: 'Noto Serif KR', serif;
+        }
+        
+        .latin-name {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* Modal styling for enlarged images */
+        .modal {
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none; /* Hidden by default */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* Styles for the new text under the names */
+        .intro-text {
+            position: absolute;
+            top: 111%; /* Position it below the main names */
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            font-family: 'Noto Serif KR', serif;
+            font-size: 1.6rem;
+            line-height: 1.75;
+            color: #333;
+            width: 35%; /* Adjust width to fit between the vertical lines */
+            word-wrap: break-word;
+            white-space: pre-line; /* Preserves line breaks from the original text */
+        }
+
+        /* Styles for the map section */
+        .map-container {
+            position: absolute;
+            top: 280%; /* Adjust this value to move the map up or down */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 35%; /* Same as the text and gallery width */
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .map-container p {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 1.25rem;
+            line-height: 1.5;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .map-container a {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background-color: #333;
+            color: #fcfbf8;
+            font-family: 'Cormorant Garamond', serif;
+            text-decoration: none;
+            border-radius: 9999px;
+            transition: all 0.3s ease;
+            margin-bottom: 1rem;
+        }
+
+        .map-container a:hover {
+            background-color: #555;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: auto;
+            min-height: 500px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+    <img src="flower.png" alt="A flower" class="flower-image">
+
+    <div class="vertical-line" style="left: 28%;"></div>
+    <div class="vertical-line" style="left: 72%;"></div>
+
+    <!-- Container for the elegant, centered text -->
+    <div class="centered-text">
+        <span class="korean-name">민정</span><br>
+        <span class="korean-name">&</span><br>
+        <span class="korean-name">라슬로</span>
+    </div>
+
+    <!-- New text below the main names -->
+    <div class="intro-text">
+지구 반대편에서 운명의 짝을 만나
+이제는 서로에게 가장 든든한 편이 되어
+앞으로의 여정을 함께 하는 시작에
+작지만 따뜻한 가족 결혼식을 올리고자 하오니
+귀한 걸음하셔서 축복해 주시면 감사하겠습니다
+
+박도우 · 나향미 의 장녀 박민정
+Nyári László · Tusz Ágnes 의 장남
+Nyári László Attila
+
+📅 2025년 11월 8일 토요일 오전 11시
+📍 천안 송연
+    </div>
+
+    <!-- Gallery container, placed between the vertical lines and below the text -->
+    <div class="absolute top-[150%] left-[50%] -translate-x-1/2 flex flex-col justify-center gap-2 w-[12%]">
+        <!-- First row of images -->
+        <div class="flex flex-row justify-center gap-2">
+            <img src="IMG_0974.jpg" alt="Placeholder image 1" class="rounded-lg w-full h-auto object-cover flex-1 cursor-pointer" onclick="openModal('IMG_0974.JPG')">
+            <img src="IMG_8418.jpg" alt="Placeholder image 2" class="rounded-lg w-full h-auto object-cover flex-1 cursor-pointer" onclick="openModal('IMG_8418.JPG')">
+            <img src="IMG_8419.jpg" alt="Placeholder image 3" class="rounded-lg w-full h-auto object-cover flex-1 cursor-pointer" onclick="openModal('IMG_8419.JPG')">
+        </div>
+        
+        <!-- Second row of images -->
+        <div class="flex flex-row justify-center gap-2">
+            <img src="IMG_0975.jpg" alt="Placeholder image 4" class="rounded-lg w-full h-auto object-cover flex-1 cursor-pointer" onclick="openModal('IMG_0975.JPG')">
+            <img src="IMG_0976.jpg" alt="Placeholder image 5" class="rounded-lg w-full h-auto object-cover flex-1 cursor-pointer" onclick="openModal('IMG_0976.JPG')">
+            <img src="IMG_0977.jpg" alt="Placeholder image 6" class="rounded-lg w-full h-auto object-cover flex-1 cursor-pointer" onclick="openModal('IMG_0977.JPG')">
+        </div>
+
+        <!-- Third row of images -->
+        <div class="flex flex-row justify-center gap-2">
+            <img src="IMG_0978.jpg" alt="Placeholder image 7" class="rounded-lg w-full h-auto object-cover flex-1 cursor-pointer" onclick="openModal('IMG_0978.jpg')">
+            <img src="IMG_0979.jpg" alt="Placeholder image 8" class="rounded-lg w-full h-auto object-cover flex-1 cursor-pointer" onclick="openModal('IMG_0979.jpg')">
+            <img src="" alt="Placeholder image 9" class="rounded-lg w-full h-auto object-cover flex-1 cursor-pointer" onclick="openModal('')">
+        </div>
+    </div>
+
+    <!-- The Modal (Enlarged Image Viewer) -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <script>
+        // JavaScript for modal functionality
+        const modal = document.getElementById("imageModal");
+        const modalImage = document.getElementById("modalImage");
+
+        function openModal(imageSrc) {
+            modal.style.display = "flex";
+            modalImage.src = imageSrc;
+        }
+
+        function closeModal() {
+            modal.style.display = "none";
+        }
+    </script>
+
+    <!-- Leave separator -->
+    <img src="leaf1.png" alt="Decorative leaf separator" class="absolute top-[134%] left-1/2 -translate-x-1/2 w-[8%] z-10">
+
+      <!-- Leave separator -->
+    <img src="leaf2.png" alt="Decorative leaf separator" class="absolute top-[260%] left-1/2 -translate-x-1/2 w-[23%] z-10">
+
+    <!-- Embedded Map Section -->
+    <div class="map-container">
+        <p>아래 버튼을 클릭하시면 네이버 지도에서 지도를 열 수 있습니다:</p>
+        <a href="https://naver.me/FFGM6CWm" target="_blank">네이버 지도에서 보기</a>
+
+        <p class="mt-8">아래에서 구글 지도로도 볼 수 있습니다:</p>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3194.1209335771673!2d127.18279701376512!3d36.815621908598665!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b290a17230cb5%3A0xe5cf6a5756b89861!2sSong-Yeon!5e0!3m2!1sen!2shu!4v1757176622585!5m2!1sen!2shu" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <!-- Bottom flower image -->
+    <img src="flower_bottom.png" alt="Decorative flower border at the bottom of the page" class="absolute top-[335%] left-1/2 -translate-x-1/2 w-[44%] z-10">
+
+</body>
+</html>
